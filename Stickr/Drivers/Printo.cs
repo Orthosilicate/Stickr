@@ -37,7 +37,7 @@ namespace Stickr.Drivers
             bpac.Document doc = new bpac.Document();
             if (doc.Open(templatePath) != false)
             {
-                foreach (field item in Sticker.fields)
+                foreach (fieldItem item in Sticker.fields)
                 {
                     doc.GetObject(item.name).Text = item.text;
                 }
@@ -57,7 +57,7 @@ namespace Stickr.Drivers
     }
 
 
-    public class field
+    public class fieldItem
     {
         public string name;
         public string text;
@@ -66,24 +66,24 @@ namespace Stickr.Drivers
     {
         public string File;
         public string Name;
-        public ObservableCollection<field> fields;
+        public ObservableCollection<fieldItem> fields;
 
         public override string ToString()
         {
             return Name;
         }
     }
-    public class StickerTypes
+    public static class StickerBox
     {
-        public static List<sticker> stickers = new List<sticker>();
+        public static List<sticker> stickers;
         public static void Make()
         {
-            ObservableCollection<field> tempFields = new ObservableCollection<field>();
-            stickers.Clear();
+            ObservableCollection<fieldItem> tempFields = new ObservableCollection<fieldItem>();
+            stickers = new List<sticker>();
 
             //Long Text
             tempFields.Clear();
-            tempFields.Add(new field()
+            tempFields.Add(new fieldItem()
             {
                 name = "Text",
                 text = "Text1",
@@ -92,7 +92,7 @@ namespace Stickr.Drivers
             {
                 File = @"BigText.lbx",
                 Name = "Long-Ass Sticker",
-                fields = new ObservableCollection<field>(tempFields),
+                fields = new ObservableCollection<fieldItem>(tempFields),
 
             });
 
@@ -100,7 +100,7 @@ namespace Stickr.Drivers
             //Small Text
             //=========================================
             tempFields.Clear();
-            tempFields.Add(new field()
+            tempFields.Add(new fieldItem()
             {
                 name = "Text",
                 text = "Text1",
@@ -109,7 +109,7 @@ namespace Stickr.Drivers
             {
                 File = @"Normal.lbx",
                 Name = "Small Sticker",
-                fields = new ObservableCollection<field>(tempFields),
+                fields = new ObservableCollection<fieldItem>(tempFields),
 
             });
 
@@ -117,12 +117,12 @@ namespace Stickr.Drivers
             //QR Code
             //=========================================
             tempFields.Clear();
-            tempFields.Add(new field()
+            tempFields.Add(new fieldItem()
             {
                 name = "Header",
                 text = "Text1",
             });
-            tempFields.Add(new field()
+            tempFields.Add(new fieldItem()
             {
                 name = "QRCode",
                 text = "Text2",
@@ -131,7 +131,7 @@ namespace Stickr.Drivers
             {
                 File = @"QR_Code.lbx",
                 Name = "QR Code",
-                fields = new ObservableCollection<field>(tempFields)
+                fields = new ObservableCollection<fieldItem>(tempFields)
 
             });
         }

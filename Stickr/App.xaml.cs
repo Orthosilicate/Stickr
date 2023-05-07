@@ -35,6 +35,7 @@ namespace Stickr
         /// </summary>
         public App()
         {
+            this.RequestedTheme = ApplicationTheme.Dark;
             this.InitializeComponent();
         }
 

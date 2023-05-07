@@ -18,6 +18,8 @@ using Windows.Foundation.Collections;
 using Stickr.Drivers;
 using Windows.System;
 using System.Xml.Linq;
+using System.Collections.ObjectModel;
+using System.Security.Cryptography;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -28,35 +30,22 @@ namespace Stickr.Pages
     /// </summary>
     public sealed partial class FastPage : Page
     {
-        public sticker CurrentSticker { get; set; } 
-        public sticker StaticSticker 
-        {
-            get { return CurrentSticker; }   // get method
-            set { CurrentSticker = value; }  // set method
+
+        public sticker ActiveSticker { get; set; }
+        public ObservableCollection<fieldItem> ActiveFields { get; set; }
+        public sticker ActiveStickerBind {
+            get { return ActiveSticker; }
+            set { value =  ActiveSticker; }
         }
-        List<sticker> stickerOptions;
+
 
         public FastPage()
         {
+            StickerBox.Make();
             this.InitializeComponent();
-            StickerTypes.Make();
-            StaticSticker = StickerTypes.stickers[0];
-
-            stickerOptions = new List<sticker>();   
-
-            //StaticSticker = StickerTypes.stickers[0];
-            addtypes();
+            ActiveSticker = StickerBox.stickers.First();
+            ActiveFields= new ObservableCollection<fieldItem>();
         }
-
-        private void addtypes()
-        {
-            foreach(sticker sti in StickerTypes.stickers)
-            {
-                stickerOptions.Add(sti);
-            }
-        }
-
-
 
         private void printClick(object sender, RoutedEventArgs e)
         {
@@ -75,8 +64,15 @@ namespace Stickr.Pages
 
         private void StickerSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var index = sender.SelectedItem;
-            int t = 2;
+            if (StickerSelect.SelectedItem == null) return;
+            sticker selected = StickerSelect.SelectedItem as sticker;
+            ActiveSticker = selected;
+            ActiveFields.Clear();
+            foreach (fieldItem f in ActiveSticker.fields)
+            {
+                ActiveFields.Add(f);
+            }
         }
+
     }
 }

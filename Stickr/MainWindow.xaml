@@ -8,8 +8,9 @@
     xmlns:local="using:Stickr"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Grid>
+    mc:Ignorable="d"
+    >
+    <Grid   >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
@@ -31,7 +32,7 @@
         <NavigationView x:Name="NavPane" Grid.Row="1" IsBackButtonVisible="Collapsed" Loaded="NavPane_Loaded" SelectionChanged="NavPane_SelectionChanged" OpenPaneLength="160" CompactPaneLength ="48">
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Play" Content="Fast" Tag="fast" />
+                <NavigationViewItem Icon="Play" Content="Fast" Tag="fast"/>
                 <NavigationViewItem Icon="Save" Content="Normal" Tag="archive" />
             </NavigationView.MenuItems>
 
