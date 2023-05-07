@@ -86,12 +86,12 @@ namespace Stickr.Drivers
             tempFields.Add(new fieldItem()
             {
                 name = "Text",
-                text = "Text1",
+                text = "",
             });
             stickers.Add(new sticker()
             {
                 File = @"BigText.lbx",
-                Name = "Long-Ass Sticker",
+                Name = "Big-Ass Sticker",
                 fields = new ObservableCollection<fieldItem>(tempFields),
 
             });
@@ -103,12 +103,12 @@ namespace Stickr.Drivers
             tempFields.Add(new fieldItem()
             {
                 name = "Text",
-                text = "Text1",
+                text = "",
             });
             stickers.Add(new sticker()
             {
                 File = @"Normal.lbx",
-                Name = "Small Sticker",
+                Name = "Normal Sticker",
                 fields = new ObservableCollection<fieldItem>(tempFields),
 
             });
@@ -120,17 +120,38 @@ namespace Stickr.Drivers
             tempFields.Add(new fieldItem()
             {
                 name = "Header",
-                text = "Text1",
+                text = "",
             });
             tempFields.Add(new fieldItem()
             {
-                name = "QRCode",
-                text = "Text2",
+                name = "QR Code",
+                text = "",
             });
             stickers.Add(new sticker()
             {
                 File = @"QR_Code.lbx",
                 Name = "QR Code",
+                fields = new ObservableCollection<fieldItem>(tempFields)
+
+            });
+
+            //Barcode
+            //=========================================
+            tempFields.Clear();
+            tempFields.Add(new fieldItem()
+            {
+                name = "Header",
+                text = "",
+            });
+            tempFields.Add(new fieldItem()
+            {
+                name = "Bardode data",
+                text = "",
+            });
+            stickers.Add(new sticker()
+            {
+                File = @"Barcode.lbx",
+                Name = "Bar Code",
                 fields = new ObservableCollection<fieldItem>(tempFields)
 
             });

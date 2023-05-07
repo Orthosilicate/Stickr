@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="/Assets/Chroma-I.png" 
+            <Image Source="/Assets/StoreLogo.Scale-400.png" 
                    Grid.Column="0"
                     HorizontalAlignment="Left" 
                    Width="24" Height="24"

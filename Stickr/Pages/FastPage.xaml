@@ -24,8 +24,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:Name="SingleLineDataTemplate" x:DataType="STKR:fieldItem">
                         <StackPanel Orientation="Horizontal" Padding="12">
-                            <TextBlock Text="{x:Bind name}" VerticalAlignment="Center"  Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" Margin="12,0,20,0"/>
-                            <TextBox Text="{x:Bind text}"></TextBox>
+                            <TextBlock Text="{x:Bind name,Mode=TwoWay}" VerticalAlignment="Center"  Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" Margin="12,0,20,0" Width="150"/>
+                            <TextBox Text="{x:Bind text,Mode=TwoWay}" PlaceholderText="Type Stuff Here" MinWidth="200"></TextBox>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -42,7 +42,6 @@
         <StackPanel Padding="10" Spacing="10" Width="400" Grid.Column="1">
             <TextBlock>Type</TextBlock>
             <RadioButtons x:Name="StickerSelect" SelectionChanged="StickerSelect_SelectionChanged" ItemsSource="{x:Bind Path= STKR:StickerBox.stickers}"/>
-            <NumberBox x:Name="Selecto"></NumberBox>
         </StackPanel>
     </Grid>
 </Page>
