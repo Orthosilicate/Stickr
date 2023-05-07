@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Stickr (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Stickr (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
