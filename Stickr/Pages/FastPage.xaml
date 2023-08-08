@@ -20,19 +20,19 @@
         
         <StackPanel Padding="10" Spacing="10" Margin="10,10,10,10">
             <TextBlock>Content</TextBlock>
-            <ListView ItemsSource="{x:Bind Path =ActiveFields, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <ListView.ItemTemplate>
+            <ListView ItemsSource="{x:Bind Path =ActiveFields, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TabFocusNavigation="Local" >
+                <ListView.ItemTemplate >
                     <DataTemplate x:Name="SingleLineDataTemplate" x:DataType="STKR:fieldItem">
                         <StackPanel Orientation="Horizontal" Padding="12">
                             <TextBlock Text="{x:Bind name,Mode=TwoWay}" VerticalAlignment="Center"  Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" Margin="12,0,20,0" Width="150"/>
-                            <TextBox Text="{x:Bind text,Mode=TwoWay}" PlaceholderText="Type Stuff Here" MinWidth="200"></TextBox>
+                            <TextBox Text="{x:Bind text,Mode=TwoWay}" PlaceholderText="Type Stuff Here" MinWidth="200" ></TextBox>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button Click="printClick" Width="180" >Print</Button>
             
-            <ComboBox x:Name="FontCombo" PlaceholderText="Font" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox x:Name="FontCombo" PlaceholderText="Font" SelectionChanged="ComboBox_SelectionChanged" Visibility="Collapsed">
                 <TextBlock FontFamily="Staatliches">STAATLICHES</TextBlock>
                 <TextBlock FontFamily="Bungee">BEEP BOOP</TextBlock>
                 <TextBlock FontFamily="Rockwell">COWBOY</TextBlock>

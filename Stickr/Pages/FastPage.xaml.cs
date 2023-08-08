@@ -19,8 +19,7 @@ using Stickr.Drivers;
 using Windows.System;
 using System.Xml.Linq;
 using System.Collections.ObjectModel;
-using System.Security.Cryptography;
-// To learn more about WinUI, the WinUI project structure,
+ // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Stickr.Pages
@@ -43,16 +42,25 @@ namespace Stickr.Pages
         {
             StickerBox.Make();
             this.InitializeComponent();
-            ActiveSticker = StickerBox.stickers.First();
-            ActiveFields= new ObservableCollection<fieldItem>();
+            ActiveSticker = new sticker();
+            ActiveFields = new ObservableCollection<fieldItem>();
+
+
+            StickerSelect.SelectedIndex = 0;
         }
 
         private void printClick(object sender, RoutedEventArgs e)
         {
 
-
+            Printo.print(ActiveSticker,ActiveFields);
         }
 
+
+        private void jsonPrint(object sender, RoutedEventArgs e)
+        {
+
+            Printo.print(ActiveSticker, ActiveFields);
+        }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var y = FontCombo.SelectedItem as TextBlock;

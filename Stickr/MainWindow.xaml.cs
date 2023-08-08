@@ -37,7 +37,6 @@ namespace Stickr
         public string WindowTitle;
 
         WindowsSystemDispatcherQueueHelper m_wsdqHelper; // See separate sample below for implementation
-        Microsoft.UI.Composition.SystemBackdrops.MicaController m_micaController;
         Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController m_acrylicController;
         Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration m_configurationSource;
 
@@ -63,7 +62,11 @@ namespace Stickr
         private void NavPane_Loaded(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(_pages["fast"]);
+            NavPane.SelectedItem = NavPane.MenuItems[0];
+
         }
+
+
 
         private void NavPane_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
@@ -141,6 +144,24 @@ namespace Stickr
                 case ElementTheme.Dark: m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Dark; break;
                 case ElementTheme.Light: m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Dark; break;
                 case ElementTheme.Default: m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Dark; break;
+            }
+        }
+        double width;
+        double height;
+        private void Window_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+        {
+            if (e.Size.Width != width)
+            {
+                // Set the width of the Grid control to the new width of the window
+                BaseGrid.Width = e.Size.Width;
+                width = e.Size.Width;
+            }
+
+            if (e.Size.Height != height)
+            {
+                // Set the height of the Grid control to the new height of the window
+                BaseGrid.Height = e.Size.Width;
+                height = e.Size.Height;
             }
         }
     }

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using bpac;
+using Newtonsoft.Json;
+
 namespace Stickr.Drivers
 {
     class Printo
@@ -31,29 +33,50 @@ namespace Stickr.Drivers
             }
         }
 
-        public static void print(sticker Sticker)
+        public static sticker import(String Text)
         {
-            string templatePath = @"%userprofile%\Documents\Stickr\" + Sticker.File;
+            return  new sticker();
+        }
+
+        public static string export(sticker Sticker)
+        {
+            return JsonConvert.SerializeObject(Sticker, Newtonsoft.Json.Formatting.Indented);
+
+        }
+
+        public static void print(sticker Sticker,ObservableCollection<fieldItem> Fields)
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            string templatePath = path + @"\Stickr\" + Sticker.File;
             bpac.Document doc = new bpac.Document();
             if (doc.Open(templatePath) != false)
             {
-                foreach (fieldItem item in Sticker.fields)
+                try
                 {
-                    doc.GetObject(item.name).Text = item.text;
-                }
-                //doc.GetObject(Field).SetFontName
+                    foreach (fieldItem item in Fields)
+                    {
+                        doc.GetObject(item.name).Text = item.text;
+                    }
+                    //doc.GetObject(Field).SetFontName
 
-                // doc.SetMediaById(doc.Printer.GetMediaId(), true);
-                doc.StartPrint("", PrintOptionConstants.bpoDefault);
-                doc.PrintOut(1, PrintOptionConstants.bpoDefault);
-                doc.EndPrint();
-                doc.Close();
+                    // doc.SetMediaById(doc.Printer.GetMediaId(), true);
+                    doc.StartPrint("", PrintOptionConstants.bpoDefault);
+                    doc.PrintOut(1, PrintOptionConstants.bpoDefault);
+                    doc.EndPrint();
+                    doc.Close();
+
+                }
+                catch
+                {
+
+                }
+
             }
             else
             {
             }
         }
-        //public static List<sticker> stickerList;
     }
 
 
@@ -81,6 +104,22 @@ namespace Stickr.Drivers
             ObservableCollection<fieldItem> tempFields = new ObservableCollection<fieldItem>();
             stickers = new List<sticker>();
 
+            //Normal Text
+            //=========================================
+            tempFields.Clear();
+            tempFields.Add(new fieldItem()
+            {
+                name = "Text",
+                text = "",
+            });
+            stickers.Add(new sticker()
+            {
+                File = @"NormalLabel.lbx",
+                Name = "Normal Sticker",
+                fields = new ObservableCollection<fieldItem>(tempFields),
+
+            });
+
             //Long Text
             tempFields.Clear();
             tempFields.Add(new fieldItem()
@@ -92,23 +131,6 @@ namespace Stickr.Drivers
             {
                 File = @"BigText.lbx",
                 Name = "Big-Ass Sticker",
-                fields = new ObservableCollection<fieldItem>(tempFields),
-
-            });
-
-
-            //Small Text
-            //=========================================
-            tempFields.Clear();
-            tempFields.Add(new fieldItem()
-            {
-                name = "Text",
-                text = "",
-            });
-            stickers.Add(new sticker()
-            {
-                File = @"Normal.lbx",
-                Name = "Normal Sticker",
                 fields = new ObservableCollection<fieldItem>(tempFields),
 
             });
@@ -129,7 +151,7 @@ namespace Stickr.Drivers
             });
             stickers.Add(new sticker()
             {
-                File = @"QR_Code.lbx",
+                File = @"QRCode.lbx",
                 Name = "QR Code",
                 fields = new ObservableCollection<fieldItem>(tempFields)
 
@@ -140,21 +162,53 @@ namespace Stickr.Drivers
             tempFields.Clear();
             tempFields.Add(new fieldItem()
             {
-                name = "Header",
-                text = "",
-            });
-            tempFields.Add(new fieldItem()
-            {
-                name = "Bardode data",
+                name = "Barcode Data",
                 text = "",
             });
             stickers.Add(new sticker()
             {
                 File = @"Barcode.lbx",
-                Name = "Bar Code",
+                Name = "Barcode Text",
                 fields = new ObservableCollection<fieldItem>(tempFields)
 
             });
+
+            //Normal Text
+            //=========================================
+            tempFields.Clear();
+
+            tempFields.Add(new fieldItem()
+            {
+                name = "Item",
+                text = "",
+            }); tempFields.Add(new fieldItem()
+            {
+                name = "Number",
+                text = "",
+            });
+   
+            tempFields.Add(new fieldItem()
+            {
+                name = "Owner",
+                text = "",
+            });
+            tempFields.Add(new fieldItem()
+            {
+                name = "Details",
+                text = "",
+            });
+            stickers.Add(new sticker()
+            {
+                File = @"BoxLabel.lbx",
+                Name = "Asset Tag",
+                fields = new ObservableCollection<fieldItem>(tempFields),
+
+            });
+
+        }
+        public static void Import()
+        {
+
         }
     }
 

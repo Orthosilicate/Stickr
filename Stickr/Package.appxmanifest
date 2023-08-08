@@ -8,12 +8,12 @@
 
   <Identity
     Name="8e7602c5-d7d1-4d2c-93b6-b4836b3e1631"
-    Publisher="CN=Sam"
-    Version="1.0.0.0" />
+    Publisher="CN=Sam Macy"
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>Stickr</DisplayName>
-    <PublisherDisplayName>Sam</PublisherDisplayName>
+    <PublisherDisplayName>Sam Macy</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
