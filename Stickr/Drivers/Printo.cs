@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using bpac;
+using Microsoft.UI.Xaml.Controls;
 using Newtonsoft.Json;
 
 namespace Stickr.Drivers
@@ -41,10 +42,10 @@ namespace Stickr.Drivers
         public static string export(sticker Sticker)
         {
             return JsonConvert.SerializeObject(Sticker, Newtonsoft.Json.Formatting.Indented);
-
         }
 
-        public static void print(sticker Sticker,ObservableCollection<fieldItem> Fields)
+
+        public static  void print(sticker Sticker,ObservableCollection<fieldItem> Fields)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -54,6 +55,7 @@ namespace Stickr.Drivers
             {
                 try
                 {
+
                     foreach (fieldItem item in Fields)
                     {
                         doc.GetObject(item.name).Text = item.text;

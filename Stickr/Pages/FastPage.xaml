@@ -30,7 +30,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Click="printClick" Width="180" >Print</Button>
+            
             
             <ComboBox x:Name="FontCombo" PlaceholderText="Font" SelectionChanged="ComboBox_SelectionChanged" Visibility="Collapsed">
                 <TextBlock FontFamily="Staatliches">STAATLICHES</TextBlock>
@@ -42,6 +42,9 @@
         <StackPanel Padding="10" Spacing="10" Width="400" Grid.Column="1">
             <TextBlock>Type</TextBlock>
             <RadioButtons x:Name="StickerSelect" SelectionChanged="StickerSelect_SelectionChanged" ItemsSource="{x:Bind Path= STKR:StickerBox.stickers}"/>
+            <Button Click="printClick" Width="180" >Print</Button>
+            <Button x:Name="Serialize" Click="Serialize_Click">Export</Button>
+            <TextBox TextWrapping="Wrap" x:Name="JsonFormat"></TextBox>
         </StackPanel>
     </Grid>
 </Page>

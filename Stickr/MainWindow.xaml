@@ -35,6 +35,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Play" Content="Fast" Tag="fast"/>
                 <NavigationViewItem Icon="Save" Content="Normal" Tag="archive" />
+                <NavigationViewItem Icon="Account" Content="Boggle" Tag="boggle" />
             </NavigationView.MenuItems>
 
             <Grid Background="#303030">

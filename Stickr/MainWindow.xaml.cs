@@ -55,6 +55,7 @@ namespace Stickr
 
             _pages.Add("archive", typeof(Pages.ArchivePage));
             _pages.Add("fast", typeof(Pages.FastPage));
+            _pages.Add("boggle", typeof(Pages.BogglePage));
             TrySetAcrylicBackdrop();
 
         }

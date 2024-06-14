@@ -49,8 +49,17 @@ namespace Stickr.Pages
             StickerSelect.SelectedIndex = 0;
         }
 
-        private void printClick(object sender, RoutedEventArgs e)
+        private async void printClick(object sender, RoutedEventArgs e)
         {
+
+                ContentDialog noWifiDialog = new ContentDialog()
+                {
+                    Title = "Fields",
+                    Content = "Printint Stuff",
+                    CloseButtonText = "Ok",
+                    XamlRoot = this.XamlRoot
+                };
+                await noWifiDialog.ShowAsync();
 
             Printo.print(ActiveSticker,ActiveFields);
         }
@@ -82,5 +91,9 @@ namespace Stickr.Pages
             }
         }
 
+        private void Serialize_Click(object sender, RoutedEventArgs e)
+        {
+            JsonFormat.Text = Printo.export(ActiveSticker);
+        }
     }
 }
